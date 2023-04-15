@@ -1,4 +1,6 @@
-# <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`** 
+# <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`** ![orange-slice](https://user-images.githubusercontent.com/22597020/232248832-f499a0d1-143d-4a48-81ed-dc5484abd135.svg)
+
+
 
 <details>
 <summary>About Project</summary>
@@ -30,7 +32,7 @@ In July 2018, the composition metric is 11.89, meaning that 11.89% of the client
  
   ---
 
- The mapping table links the interest_id with their relevant interest information. 
+ The Interest map table links the interest_id with their relevant interest information. 
  
  | id  | interest_name             | interest_summary                                                   | created_at            | last_modified        |
 |----:|--------------------------|--------------------------------------------------------------------|-----------------------|----------------------|
