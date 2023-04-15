@@ -11,10 +11,24 @@ Clients share their customer lists with the Fresh Segments team who then aggrega
 <summary> Datasets - Interest Metrics & Interest Map </summary>
 The Interest Metrics table contains information about aggregated interest metrics for a specific major client of Fresh Segments which makes up a large proportion of their customer base. Each record in this table represents the performance of a specific interest_id based on the client’s customer base interest measured through clicks and interactions with specific targeted advertising content. 
 
- ---
+ | Month | Year | Month_Year | Interest_ID | Composition | Index_Value | Ranking | Percentile_Ranking |
+|------:|-----:|-----------|------------:|------------:|------------:|--------:|-------------------:|
+|     7 | 2018 |    07-2018 |       32486 |       11.89 |        6.19 |       1 |              99.86 |
+|     7 | 2018 |    07-2018 |        6106 |        9.93 |        5.31 |       2 |              99.73 |
+|     7 | 2018 |    07-2018 |       18923 |       10.85 |        5.29 |       3 |              99.59 |
+|     7 | 2018 |    07-2018 |        6344 |       10.32 |         5.1 |       4 |              99.45 |
+|     7 | 2018 |    07-2018 |         100 |       10.77 |        5.04 |       5 |              99.31 |
+|     7 | 2018 |    07-2018 |          69 |       10.82 |        5.03 |       6 |              99.18 |
+|     7 | 2018 |    07-2018 |          79 |       11.21 |        4.97 |       7 |              99.04 |
+|     7 | 2018 |    07-2018 |        6111 |       10.71 |        4.83 |       8 |               98.9 |
+|     7 | 2018 |    07-2018 |        6214 |        9.71 |        4.83 |       8 |               98.9 |
+|     7 | 2018 |    07-2018 |       19422 |       10.11 |        4.81 |      10 |              98.63 |
+ 
+</details>
+
 ```sql
 DESCRIBE interest_metrics;
-``
+```
  
  
 | Field          | Type         | Null | Key |
@@ -28,24 +42,7 @@ DESCRIBE interest_metrics;
 | ranking        | int          | YES  |     |
 | percentile_ranking | float   | YES  |     |
  
- 
- 
-| Month | Year | Month_Year | Interest_ID | Composition | Index_Value | Ranking | Percentile_Ranking |
-|------:|-----:|-----------|------------:|------------:|------------:|--------:|-------------------:|
-|     7 | 2018 |    07-2018 |       32486 |       11.89 |        6.19 |       1 |              99.86 |
-|     7 | 2018 |    07-2018 |        6106 |        9.93 |        5.31 |       2 |              99.73 |
-|     7 | 2018 |    07-2018 |       18923 |       10.85 |        5.29 |       3 |              99.59 |
-|     7 | 2018 |    07-2018 |        6344 |       10.32 |         5.1 |       4 |              99.45 |
-|     7 | 2018 |    07-2018 |         100 |       10.77 |        5.04 |       5 |              99.31 |
-|     7 | 2018 |    07-2018 |          69 |       10.82 |        5.03 |       6 |              99.18 |
-|     7 | 2018 |    07-2018 |          79 |       11.21 |        4.97 |       7 |              99.04 |
-|     7 | 2018 |    07-2018 |        6111 |       10.71 |        4.83 |       8 |               98.9 |
-|     7 | 2018 |    07-2018 |        6214 |        9.71 |        4.83 |       8 |               98.9 |
-|     7 | 2018 |    07-2018 |       19422 |       10.11 |        4.81 |      10 |              98.63 |
- 
- 
- 
-</details>
+
 
 
 ![8](https://user-images.githubusercontent.com/22597020/232243814-f080ffd6-c026-4bc0-85f9-4452be1cc991.png)
