@@ -4,7 +4,7 @@
 ---
 This repository hosts the solutions to the 8th challenge of the 8 Weeks SQL Challenge by DannyMa.
 [Click here to view the full challenge](https://8weeksqlchallenge.com/case-study-8/)
-
+---
 
 
 
