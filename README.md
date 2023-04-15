@@ -28,6 +28,23 @@ The Interest Metrics table contains information about aggregated interest metric
  
 In July 2018, the composition metric is 11.89, meaning that 11.89% of the client’s customer list interacted with the interest interest_id = 32486 - we can link interest_id to a separate mapping table to find the segment name called “Vacation Rental Accommodation Researchers”. The index_value is 6.19, means that the composition value is 6.19x the average composition value for all Fresh Segments clients’ customer for this particular interest in the month of July 2018. The ranking and percentage_ranking relates to the order of index_value records in each month year. 
  
+  ---
+ 
+ 
+ | id  | interest_name             | interest_summary                                                   | created_at            | last_modified        |
+|----:|--------------------------|--------------------------------------------------------------------|-----------------------|----------------------|
+| 1   | Fitness Enthusiasts       | Consumers using fitness tracking apps and websites.                | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+| 2   | Gamers                    | Consumers researching game reviews and cheat codes.                | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+| 3   | Car Enthusiasts           | Readers of automotive news and car reviews.                         | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+| 4   | Luxury Retail Researchers | Consumers researching luxury product reviews and gift ideas.        | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+| 5   | Brides & Wedding Planners | People researching wedding ideas and vendors.                        | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+| 6   | Vacation Planners         | Consumers reading reviews of vacation destinations and accommodations. | 2016-05-26 14:57:59   | 2018-05-23 11:30:13  |
+| 7   | Motorcycle Enthusiasts    | Readers of motorcycle news and reviews.                             | 2016-05-26 14:57:59   | 2018-05-23 11:30:13  |
+| 8   | Business News Readers     | Readers of online business news content.                            | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+| 12  | Thrift Store Shoppers     | Consumers shopping online for clothing at thrift stores and researching locations. | 2016-05-26 14:57:59  | 2018-03-16 13:14:00  |
+| 13  | Advertising Professionals | People who read advertising industry news.                          | 2016-05-26 14:57:59   | 2018-05-23 11:30:12  |
+
+ 
 </details>
 
 
