@@ -1,6 +1,7 @@
 # <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`** 🍊
  
-<img width="203" alt="8" src="https://user-images.githubusercontent.com/22597020/232251431-a02370dd-5a9c-4155-9fa5-26d3b4693620.png">
+<img width="405" alt="8" src="https://user-images.githubusercontent.com/22597020/232251670-86918f03-d118-45df-805a-9a7de795bc68.png">
+
 
 ---
 
