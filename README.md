@@ -66,3 +66,5 @@ In July 2018, the composition metric is 11.89, meaning that 11.89% of the client
 - [Customer Segment Analysis](https://github.com/idada29/Case-Study-8---Fresh-Segments-/blob/main/Customer%20Segment%20Analysis.md)
 - [Index Analysis](https://github.com/idada29/Case-Study-8---Fresh-Segments-/blob/main/Index%20Analysis.md)
    
+---
+## Visualization 📈
