@@ -59,5 +59,11 @@ In July 2018, the composition metric is 11.89, meaning that 11.89% of the client
 
 # <p align="center" style="margin-bottom: 0px !important;">  ![Table Relationship Diagram](https://user-images.githubusercontent.com/22597020/232250937-b4e4e226-4a65-4d7f-99c7-e31bcab57f7c.png)
 
-
+---
+## Case Study Solutions
+- [Part A - Customer Journey](https://github.com/Chisomnwa/8-Week-SQL-Challenge-Case-Study--3-Foodie-Fi/blob/main/A.%20Customer%20Journey.md)
+- [Part B - Data Analysis Questions](https://github.com/Chisomnwa/8-Week-SQL-Challenge-Case-Study--3-Foodie-Fi/blob/main/B.%20Data%20Analysis%20Questions.md)
+- [Part C - Challenge Payment Questions](https://github.com/Chisomnwa/8-Week-SQL-Challenge-Case-Study--3-Foodie-Fi/blob/main/C.%20Challenge%20Payment%20Question.md)
+- [Part D - Outside the Box Questions](https://github.com/Chisomnwa/8-Week-SQL-Challenge-Case-Study--3-Foodie-Fi/blob/main/D.%20Outside%20the%20Box%20Questions.md)
+   
 
