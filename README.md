@@ -10,8 +10,7 @@ Clients share their customer lists with the Fresh Segments team who then aggrega
 <details>
 <summary> Datasets - Interest Metrics & Interest Map </summary>
 The Interest Metrics table contains information about aggregated interest metrics for a specific major client of Fresh Segments which makes up a large proportion of their customer base. Each record in this table represents the performance of a specific interest_id based on the client’s customer base interest measured through clicks and interactions with specific targeted advertising content.
-
-  
+<br>  
 | Field          | Type         | Null | Key |
 |----------------:|--------------|------|-----|
 | _month         | varchar(4)   | YES  |     |
@@ -22,8 +21,7 @@ The Interest Metrics table contains information about aggregated interest metric
 | index_value    | float        | YES  |     |
 | ranking        | int          | YES  |     |
 | percentile_ranking | float   | YES  |     |
-  
-  
+ 
 </details>
 
 
