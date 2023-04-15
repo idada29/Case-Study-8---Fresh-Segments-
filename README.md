@@ -1,5 +1,10 @@
 # <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`** 🍊
 
+![8](https://user-images.githubusercontent.com/22597020/232243814-f080ffd6-c026-4bc0-85f9-4452be1cc991.png)
+
+---
+
+
 ## Project Introduction
 <details>
 <summary>Business Case</summary>
@@ -53,4 +58,4 @@ In July 2018, the composition metric is 11.89, meaning that 11.89% of the client
 ![Table Relationship Diagram](https://user-images.githubusercontent.com/22597020/232250937-b4e4e226-4a65-4d7f-99c7-e31bcab57f7c.png)
 
 
-![8](https://user-images.githubusercontent.com/22597020/232243814-f080ffd6-c026-4bc0-85f9-4452be1cc991.png)
+
