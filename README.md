@@ -1,6 +1,6 @@
 # <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`** 🍊
-
-![8](https://user-images.githubusercontent.com/22597020/232243814-f080ffd6-c026-4bc0-85f9-4452be1cc991.png)
+ 
+<img width="203" alt="8" src="https://user-images.githubusercontent.com/22597020/232251431-a02370dd-5a9c-4155-9fa5-26d3b4693620.png">
 
 ---
 
