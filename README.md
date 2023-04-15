@@ -1,5 +1,4 @@
 # <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`** 
-![orange-slice](https://user-images.githubusercontent.com/22597020/232248904-1b5260d1-2831-44d0-859b-eb42dae003fd.png)
 
 
 <details>
