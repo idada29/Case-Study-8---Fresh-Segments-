@@ -26,30 +26,9 @@ The Interest Metrics table contains information about aggregated interest metric
 |     7 | 2018 |    07-2018 |       19422 |       10.11 |        4.81 |      10 |              98.63 |
  
  
-In July 2018, the composition metric is 11.89, meaning that 11.89% of the client’s customer list interacted with the interest interest_id = 32486 - we can link interest_id to a separate mapping table to find the segment name called “Vacation Rental Accommodation Researchers”
-
-The index_value is 6.19, means that the composition value is 6.19x the average composition value for all Fresh Segments clients’ customer for this particular interest in the month of July 2018.
-
-The ranking and percentage_ranking relates to the order of index_value records in each month year. 
+In July 2018, the composition metric is 11.89, meaning that 11.89% of the client’s customer list interacted with the interest interest_id = 32486 - we can link interest_id to a separate mapping table to find the segment name called “Vacation Rental Accommodation Researchers”. The index_value is 6.19, means that the composition value is 6.19x the average composition value for all Fresh Segments clients’ customer for this particular interest in the month of July 2018. The ranking and percentage_ranking relates to the order of index_value records in each month year. 
  
 </details>
-
-```sql
-DESCRIBE interest_metrics;
-```
- 
- 
-| Field          | Type         | Null | Key |
-|----------------:|--------------|------|-----|
-| _month         | varchar(4)   | YES  |     |
-| _year          | varchar(4)   | YES  |     |
-| month_year     | date         | YES  |     |
-| interest_id    | varchar(5)   | YES  | PRI |
-| composition    | float        | YES  |     |
-| index_value    | float        | YES  |     |
-| ranking        | int          | YES  |     |
-| percentile_ranking | float   | YES  |     |
- 
 
 
 
