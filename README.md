@@ -70,6 +70,6 @@ In July 2018, the composition metric is 11.89, meaning that 11.89% of the client
 ## Visualization 📈
  
 ---
-## Connect with me
+## Connect with me 🔵
  - [Linkedin](https://www.linkedin.com/in/isaac-dada-24ba6ab3)
 
