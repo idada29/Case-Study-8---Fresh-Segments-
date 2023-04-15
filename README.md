@@ -48,6 +48,7 @@ In July 2018, the composition metric is 11.89, meaning that 11.89% of the client
 
 </details>
 
-
+## Table Relationship Diagram
+Table Relationship Diagram.png
 
 ![8](https://user-images.githubusercontent.com/22597020/232243814-f080ffd6-c026-4bc0-85f9-4452be1cc991.png)
