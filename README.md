@@ -1,4 +1,4 @@
-# <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`**     `:orange:`
+# <p align="center" style="margin-top: 0px;">  **`Case-Study-8-Fresh-Segments`**🍊
 
 ## Project Introduction
 <details>
