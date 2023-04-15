@@ -2,7 +2,8 @@
  
 # <p align="center" style="margin-top: 0px;">  <img width="405" alt="8" src="https://user-images.githubusercontent.com/22597020/232251670-86918f03-d118-45df-805a-9a7de795bc68.png">
 ---
-This repository hosts the solutions to the 8th challenge of the 8 Weeks SQL Challenge by DannyMa. [Click here to view the full challenge]([http://link-url.com](https://8weeksqlchallenge.com/case-study-8/))
+This repository hosts the solutions to the 8th challenge of the 8 Weeks SQL Challenge by DannyMa.
+[Click here to view the full challenge]([http://link-url.com](https://8weeksqlchallenge.com/case-study-8/))
 
 
 
