@@ -121,7 +121,19 @@ GROUP BY ids,3;
 	
 	
 	
-*Summarise the id values in the fresh_segments.interest_map by its total record count in this table*
+*5. Summarise the id values in the fresh_segments.interest_map by its total record count in this table*
+	
+```sql
+SELECT 
+    CONCAT('There is ',
+            COUNT(B.id),
+            ' in interest_map table') AS Records
+FROM
+    interest_map B;	
+```
+|Records  |                                                                                                     |
+|------|
+|There is 1209 in interest_map table|
   
 *What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
   
