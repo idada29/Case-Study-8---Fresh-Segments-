@@ -27,7 +27,8 @@ SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");
 *What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
  
  ```sql 
-SELECT 
+-- Replace the null value in the newly concatenated month_year with unknown then count records
+ SELECT 
     COALESCE(month_year, 'Unknown') AS Dates,
     COUNT(*) AS Records
 FROM
