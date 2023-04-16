@@ -136,6 +136,40 @@ FROM
 |There is 1209 in interest_map table|
 
   
-*What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
+*6. What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
+	
+```sql
+	
+--  Select all record for 21246
+WITH CTE_1 AS 
+(SELECT * FROM interest_metrics
+ WHERE interest_id = 21246)
+
+-- Join the information from the metric table to find all matching info from the mapping table, with all interest_id in the metrics table only      
+SELECT 
+    CTE_1.*,
+    B.interest_name,
+    B.interest_summary,
+    B.created_at,
+    B.last_modified
+FROM CTE_1
+LEFT JOIN interest_map B 
+ON CTE_1.interest_id = B.id
+WHERE CTE_1.month_year IS NOT NULL;
+```
+	
+| _month | _year | month_year  | interest_id | composition | index_value | ranking | percentile_ranking | interest_name                        | interest_summary                          | created_at | last_modified |
+| ------ | ----- | -----------| -----------| ----------- | -----------| ------- | ----------------- | ------------------------------------ | ----------------------------------------- | ---------- | ------------- |
+| 7      | 2018  | 2018-07-01 | 21246       | 2.26        | 0.65       | 722     | 0.96              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 8      | 2018  | 2018-08-01 | 21246       | 2.13        | 0.59       | 765     | 0.26              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 9      | 2018  | 2018-09-01 | 21246       | 2.06        | 0.61       | 774     | 0.77              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 10     | 2018  | 2018-10-01 | 21246       | 1.74        | 0.58       | 855     | 0.23              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 11     | 2018  | 2018-11-01 | 21246       | 2.25        | 0.78       | 908     | 2.16              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 12     | 2018  | 2018-12-01 | 21246       | 1.97        | 0.7        | 983     | 1.21              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 1      | 2019  | 2019-01-01 | 21246       | 2.05        | 0.76       | 954     | 1.95              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 2      | 2019  | 2019-02-01 | 21246       | 1.84        | 0.68       | 1109    | 1.07              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 3      | 2019  | 2019-03-01 | 21246       | 1.75        | 0.67       | 1123    | 1.14              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
+| 4      | 2019  | 2019-04-01 | 21246       | 1.58        | 0.63       | 1092    | 0.64              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |
+
   
-*Are there any records in your joined table where the month_year value is before the created_at value from the fresh_segments.interest_map table? Do you think these values are valid and why?*
+*7. Are there any records in your joined table where the month_year value is before the created_at value from the fresh_segments.interest_map table? Do you think these values are valid and why?*
