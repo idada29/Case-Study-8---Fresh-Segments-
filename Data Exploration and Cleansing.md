@@ -21,6 +21,37 @@ SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");
   
   
 *What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
+ 
+ ```sql 
+SELECT 
+    COALESCE(month_year, 'Unknown') AS Dates,
+    COUNT(*) AS Records
+FROM
+    interest_metrics
+GROUP BY Dates
+ORDER BY 1 DESC , 2; 
+```
+
+ | Dates       | Records |
+|-------------|---------|
+| Unknown     | 1194    |
+| 2019-08-01  | 1149    |
+| 2019-03-01  | 1136    |
+| 2019-02-01  | 1121    |
+| 2019-04-01  | 1099    |
+| 2018-12-01  | 995     |
+| 2019-01-01  | 973     |
+| 2018-11-01  | 928     |
+| 2019-07-01  | 864     |
+| 2019-05-01  | 857     |
+| 2018-10-01  | 857     |
+| 2019-06-01  | 824     |
+| 2018-09-01  | 780     |
+| 2018-08-01  | 767     |
+| 2018-07-01  | 729     |
+
+ 
+ 
   
 *What do you think we should do with these null values in the fresh_segments.interest_metrics*
   
