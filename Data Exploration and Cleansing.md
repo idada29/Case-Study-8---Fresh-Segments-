@@ -5,13 +5,14 @@
 *Update the fresh_segments.interest_metrics table by modifying the month_year column to be a date data type with the start of the month*
 
  ```sql
--- You have to first change the length of the varcha to allow for the new addition of month beginning
+-- You have to first change the length of the varchar to allow for the new addition of month beginning
 ALTER TABLE interest_metrics MODIFY month_year VARCHAR(15);
 
 -- Next update with a concatenation, TO ADD MONTH beginning at 01
 UPDATE fresh_segments.interest_metrics
 SET month_year = CONCAT("01-",month_year);
 
+-- Replace the - symbol to allow for further date manipulation
 UPDATE fresh_segments.interest_metrics
 SET month_year = REPLACE(month_year, '-', '/')
 WHERE month_year LIKE '%-%';
