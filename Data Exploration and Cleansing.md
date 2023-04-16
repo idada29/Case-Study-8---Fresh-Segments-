@@ -21,7 +21,9 @@ UPDATE interest_metrics
 SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");  
 ```
 <details>  
-  
+ 
+<details>
+<summary> Question 2 </summary> 
 *What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
  
  ```sql 
@@ -52,7 +54,7 @@ ORDER BY 1 DESC , 2;
 | 2018-08-01  | 767     |
 | 2018-07-01  | 729     |
 
- 
+<details> 
  
   
 *What do you think we should do with these null values in the fresh_segments.interest_metrics*
