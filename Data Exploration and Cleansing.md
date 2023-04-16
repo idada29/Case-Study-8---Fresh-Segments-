@@ -62,6 +62,7 @@ ORDER BY 1 DESC , 2;
  - Considering using imputation techniques if you have sufficient information to create new data points without making the data bias.
  
  ```sql  
+-- Selec
 WITH records AS (
   SELECT COALESCE(month_year, 'Unknown') AS Dates,
     COUNT(*) AS Records
@@ -77,7 +78,11 @@ FROM records
 GROUP BY 
 	CASE WHEN Dates = 'Unknown' THEN 'Unknown' ELSE 'Other' END;
  ```
- 
+ | Record_dates | Total_records |
+|--------------|---------------|
+| Unknown      | 1194          |
+| Other        | 13079       |
+
   
 *How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
   
