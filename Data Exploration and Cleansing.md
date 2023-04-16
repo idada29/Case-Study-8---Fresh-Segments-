@@ -2,7 +2,7 @@
 ## <p align="center"> Data Exploration and Cleansing
 
 
-*Update the fresh_segments.interest_metrics table by modifying the month_year column to be a date data type with the start of the month*
+*1. Update the fresh_segments.interest_metrics table by modifying the month_year column to be a date data type with the start of the month*
 
  ```sql
 -- You have to first change the length of the varchar to allow for the new addition of month beginning
@@ -21,10 +21,7 @@ UPDATE interest_metrics
 SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");  
 ```
 
- 
-
-
-*What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
+*2. What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
  
  ```sql 
 -- Replace the null value in the newly concatenated month_year with unknown then count records
@@ -58,6 +55,29 @@ ORDER BY 1 DESC , 2;
 
   
 *What do you think we should do with these null values in the fresh_segments.interest_metrics*
+ A good data quality step in handling null values is:
+ - Identifying the reason for missing data.
+ - Assessing the extent of missing data.
+ - Assessing the data type of the missing data, to determine suitable statistical techniques to apply.
+ - Considering using imputation techniques if you have sufficient information to create new data points without making the data bias.
+ 
+ ```sql  
+WITH records AS (
+  SELECT COALESCE(month_year, 'Unknown') AS Dates,
+    COUNT(*) AS Records
+  FROM interest_metrics
+  GROUP BY Dates
+  ORDER BY 1 DESC , 2
+)
+SELECT 
+	CASE WHEN Dates = 'Unknown' THEN 'Unknown'
+    ELSE 'Other' END AS Record_dates,
+    SUM(Records) AS Total_Record
+FROM records
+GROUP BY 
+	CASE WHEN Dates = 'Unknown' THEN 'Unknown' ELSE 'Other' END;
+ ```
+ 
   
 *How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
   
