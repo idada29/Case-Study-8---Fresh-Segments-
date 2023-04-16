@@ -1,8 +1,7 @@
 # <p align="center" style="margin-top: 0px;"> Case-Study-8-Fresh-Segments 🍊
 ## <p align="center"> Data Exploration and Cleansing
 
-<details>
-<summary> Question 1 </summary>
+
 *Update the fresh_segments.interest_metrics table by modifying the month_year column to be a date data type with the start of the month*
 
  ```sql
@@ -20,12 +19,10 @@ WHERE month_year LIKE '%-%';
 UPDATE interest_metrics
 SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");  
 ```
-<details>
+
  
-<br>
- 
-<details>
-<summary> Question 2 </summary> 
+
+
 *What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
  
  ```sql 
@@ -56,8 +53,7 @@ ORDER BY 1 DESC , 2;
 | 2018-08-01  | 767     |
 | 2018-07-01  | 729     |
 
-<details> 
- 
+
   
 *What do you think we should do with these null values in the fresh_segments.interest_metrics*
   
