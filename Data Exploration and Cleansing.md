@@ -54,7 +54,7 @@ ORDER BY 1 DESC , 2;
 
 
   
-*What do you think we should do with these null values in the fresh_segments.interest_metrics*
+*3. What do you think we should do with these null values in the fresh_segments.interest_metrics*
  A good data quality step in handling null values is:
  - Identifying the reason for missing data.
  - Assessing the extent of missing data.
@@ -86,7 +86,7 @@ GROUP BY
 | Other        | 13079       |
 
   
-*How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
+*4. How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
 **The results shows certain ads interst which never had any customer interact through out the captured period in the interest_metric table. Also all click interest were properly summarized in the mapping table as there was no interest_id on metrics that isnt present in the interest_map**
 ```sql	
 SELECT DISTINCT
@@ -111,12 +111,12 @@ GROUP BY ids,3;
 |Ids   | count_ids | interest_summary                                                                                                          |
 |------|----------|---------------------------------------------------------------------------------------------------------------------------|
 |19598 | 1        | People reading fan sites, promotional material, and news on the Doctor Who series.                                       |
-|35964 | 1        | People in this audience participate and/or spectate in eSports (Competitive/Professional video gaming), follow various ...|
+|35964 | 1        | People in this audience participate and/or spectate in eSports (Competitive/Professional video gaming), follow various video game leagues, and keep up with video game tournaments that take place throughout the year.|
 |40185 | 1        | People researching news and trends in astronomy.                                                                          |
 |40186 | 1        | Consumers watching and reading about WWE and pro wrestling.                                                               |
 |42010 | 1        | People reading Minecraft news and following gaming trends.                                                               |
 |42400 | 1        | People reading Diablo news and following gaming trends.                                                                  |
-|47789 | 1        | People researching attractions and accommodations in Israel. These consumers are more likely to spend money on travel...|
+|47789 | 1        | People researching attractions and accommodations in Israel. These consumers are more likely to spend money on travel|
 
 	
 	
