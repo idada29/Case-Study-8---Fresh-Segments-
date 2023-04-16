@@ -62,7 +62,7 @@ ORDER BY 1 DESC , 2;
  - Considering using imputation techniques if you have sufficient information to create new data points without making the data bias.
  
  ```sql  
--- Selec
+-- Select all records in the month_year that is null
 WITH records AS (
   SELECT COALESCE(month_year, 'Unknown') AS Dates,
     COUNT(*) AS Records
@@ -70,6 +70,7 @@ WITH records AS (
   GROUP BY Dates
   ORDER BY 1 DESC , 2
 )
+-- Count the number of null/unknown value and others
 SELECT 
 	CASE WHEN Dates = 'Unknown' THEN 'Unknown'
     ELSE 'Other' END AS Record_dates,
@@ -78,6 +79,7 @@ FROM records
 GROUP BY 
 	CASE WHEN Dates = 'Unknown' THEN 'Unknown' ELSE 'Other' END;
  ```
+**In this case, it was impossible to trace the ads interaction to any date or interest_id. Hence we will drop it**
  | Record_dates | Total_records |
 |--------------|---------------|
 | Unknown      | 1194          |
