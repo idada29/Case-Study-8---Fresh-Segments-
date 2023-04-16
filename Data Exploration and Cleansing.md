@@ -20,7 +20,9 @@ WHERE month_year LIKE '%-%';
 UPDATE interest_metrics
 SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");  
 ```
-
+<details>
+ 
+---
  
 <details>
 <summary> Question 2 </summary> 
