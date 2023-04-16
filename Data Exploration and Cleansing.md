@@ -87,6 +87,7 @@ GROUP BY
 
   
 *How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
+**The results shows certain ads interst which never had any customer interact through out the captured period in the interest_metric table. Also all click interest were properly summarized in the mapping table as there was no interest_id on metrics that isnt present in the interest_map**
 ```sql	
 SELECT DISTINCT
     A.interest_id AS Ids, COUNT(A.interest_id) AS count_ids
@@ -99,15 +100,27 @@ GROUP BY ids;
 
 -- Viceversa, there are seven records in map table that is not in the metrics table 
 SELECT DISTINCT
-    B.id AS Ids, COUNT(B.id) AS count_ids
+    B.id AS Ids, COUNT(B.id) AS count_ids, B.interest_summary
 FROM
     interest_map B 
         LEFT JOIN
 	interest_metrics A ON B.id = A.interest_id 
 WHERE A.interest_id IS NULL
-GROUP BY ids;	
+GROUP BY ids,3;	
 ```	
-  
+|Ids   | count_ids | interest_summary                                                                                                          |
+|------|----------|---------------------------------------------------------------------------------------------------------------------------|
+|19598 | 1        | People reading fan sites, promotional material, and news on the Doctor Who series.                                       |
+|35964 | 1        | People in this audience participate and/or spectate in eSports (Competitive/Professional video gaming), follow various ...|
+|40185 | 1        | People researching news and trends in astronomy.                                                                          |
+|40186 | 1        | Consumers watching and reading about WWE and pro wrestling.                                                               |
+|42010 | 1        | People reading Minecraft news and following gaming trends.                                                               |
+|42400 | 1        | People reading Diablo news and following gaming trends.                                                                  |
+|47789 | 1        | People researching attractions and accommodations in Israel. These consumers are more likely to spend money on travel...|
+
+	
+	
+	
 *Summarise the id values in the fresh_segments.interest_map by its total record count in this table*
   
 *What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
