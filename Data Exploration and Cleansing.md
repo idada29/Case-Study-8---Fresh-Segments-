@@ -131,9 +131,10 @@ SELECT
 FROM
     interest_map B;	
 ```
-|Records|                                                                                                     |
+|Records|
 |------:|
 |There is 1209 in interest_map table|
+
   
 *What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
   
