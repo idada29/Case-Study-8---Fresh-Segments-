@@ -22,7 +22,7 @@ SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");
 ```
 <details>
  
----
+<br>
  
 <details>
 <summary> Question 2 </summary> 
