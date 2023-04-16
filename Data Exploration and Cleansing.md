@@ -87,6 +87,26 @@ GROUP BY
 
   
 *How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
+```sql	
+SELECT DISTINCT
+    A.interest_id AS Ids, COUNT(A.interest_id) AS count_ids
+FROM
+    interest_metrics A
+        LEFT JOIN
+    interest_map B ON A.interest_id = B.id
+WHERE B.id IS NULL
+GROUP BY ids;
+
+-- Viceversa, there are seven records in map table that is not in the metrics table 
+SELECT DISTINCT
+    B.id AS Ids, COUNT(B.id) AS count_ids
+FROM
+    interest_map B 
+        LEFT JOIN
+	interest_metrics A ON B.id = A.interest_id 
+WHERE A.interest_id IS NULL
+GROUP BY ids;	
+```	
   
 *Summarise the id values in the fresh_segments.interest_map by its total record count in this table*
   
