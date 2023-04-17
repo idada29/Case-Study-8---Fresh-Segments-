@@ -1,8 +1,8 @@
 # <p align="center" style="margin-top: 0px;"> Case-Study-8-Fresh-Segments 🍊
 ## <p align="center"> Data Exploration and Cleansing
 
-
-*1. Update the fresh_segments.interest_metrics table by modifying the month_year column to be a date data type with the start of the month*
+## Question 1
+*Update the fresh_segments.interest_metrics table by modifying the month_year column to be a date data type with the start of the month*
 
  ```sql
 -- You have to first change the length of the varchar to allow for the new addition of month beginning
@@ -20,8 +20,8 @@ WHERE month_year LIKE '%-%';
 UPDATE interest_metrics
 SET month_year = STR_TO_DATE(month_year,"%d/%m/%Y");  
 ```
-
-*2. What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
+## Question 2
+*What is count of records in the fresh_segments.interest_metrics for each month_year value sorted in chronological order (earliest to latest) with the null values appearing first?*
  
  ```sql 
 -- Replace the null value in the newly concatenated month_year with unknown then count records
@@ -53,8 +53,8 @@ ORDER BY 1 DESC , 2;
 | 2018-07-01  | 729     |
 
 
-  
-*3. What do you think we should do with these null values in the fresh_segments.interest_metrics*
+ ## Question 3
+*What do you think we should do with these null values in the fresh_segments.interest_metrics*
  A good data quality step in handling null values is:
  - Identifying the reason for missing data.
  - Assessing the extent of missing data.
@@ -85,8 +85,9 @@ GROUP BY
 | Unknown      | 1194          |
 | Other        | 13079       |
 
-  
-*4. How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
+
+## Question 4
+*How many interest_id values exist in the fresh_segments.interest_metrics table but not in the fresh_segments.interest_map table? What about the other way around?*
 **The results shows certain ads interst which never had any customer interact through out the captured period in the interest_metric table. Also all click interest were properly summarized in the mapping table as there was no interest_id on metrics that isnt present in the interest_map**
 ```sql	
 SELECT DISTINCT
@@ -120,8 +121,8 @@ GROUP BY ids,3;
 
 	
 	
-	
-*5. Summarise the id values in the fresh_segments.interest_map by its total record count in this table*
+## Question 5	
+*Summarise the id values in the fresh_segments.interest_map by its total record count in this table*
 	
 ```sql
 SELECT 
@@ -135,8 +136,8 @@ FROM
 |------:|
 |There is 1209 in interest_map table|
 
-  
-*6. What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
+ ## Question 6
+*What sort of table join should we perform for our analysis and why? Check your logic by checking the rows where interest_id = 21246 in your joined output and include all columns from fresh_segments.interest_metrics and all columns from fresh_segments.interest_map except from the id column.*
 	
 ```sql
 	
@@ -171,8 +172,8 @@ WHERE CTE_1.month_year IS NOT NULL;
 | 3      | 2019  | 2019-03-01 | 21246       | 1.75        | 0.67       | 1123    | 1.14              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |               |
 | 4      | 2019  | 2019-04-01 | 21246       | 1.58        | 0.63       | 1092    | 0.64              | Readers of El Salvadoran Content    | People reading news from El Salvadoran media sources. |            |
 
-  
-*7. Are there any records in your joined table where the month_year value is before the created_at value from the fresh_segments.interest_map table? Do you think these values are valid and why?*
+## Question 7  
+*Are there any records in your joined table where the month_year value is before the created_at value from the fresh_segments.interest_map table? Do you think these values are valid and why?*
 ```sql 
 -- Solution - involves two steps:
 -- I used step one to confirm records with metric date lesser than mapping date, next the step two was used to do a more indepth search of drilling down in terms of month and year rather than just full date as we formated the month_year to the beginning of the month
