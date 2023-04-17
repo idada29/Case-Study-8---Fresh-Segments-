@@ -176,8 +176,13 @@ WHERE CTE_1.month_year IS NOT NULL;
 ```sql 
 -- Solution - involves two steps:
 -- I used step one to confirm records with metric date lesser than mapping date, next the step two was used to do a more indepth search of drilling down in terms of month and year rather than just full date as we formated the month_year to the beginning of the month
--- More explanation: The first thing to check is how many rows are there per unique identifier in our table - in this case it’s going to be the id column from our fresh_segments.interest_map table. So there are definitely rows which show this characteristic - however, when we think about this from a deeper perspective - all of our metrics look like they are created monthly! Having the beginning of the month may just be a proxy for a summary version of all of our aggregated metrics throughout the month - so in this case we need to be wary that the month_year column might well be before our created_at column - but it shouldn’t be from an earlier month.
-Let’s confirm this by comparing the truncatated beginning of month for each created_at value with the month_year column again. 
+-- More explanation: The first thing to check is how many rows are there per unique identifier in our table 
+-- in this case it’s going to be the id column from our fresh_segments.interest_map table. 
+-- So there are definitely rows which show this characteristic - however, when we think about this from a deeper perspective
+-- all of our metrics look like they are created monthly! Having the beginning of the month may just be a proxy for a 
+-- summary version of all of our aggregated metrics throughout the month - so in this case we need to be wary that the 
+-- month_year column might well be before our created_at column - but it shouldn’t be from an earlier month.
+-- Let’s confirm this by comparing the truncatated beginning of month for each created_at value with the month_year column again. 
 WITH CTE_1 AS (
 SELECT interest_id, month_year AS metrics_year_months
 FROM  interest_metrics
@@ -212,4 +217,7 @@ WHERE
     metrics_year_months < DATE_FORMAT(B.created_at, '%Y-%m');	
 ```	
 **Indeed we can see that there are no rows for this query - so all of our data points seem to be valid for our case study!**
+| interest_id | metrics_year_months | created_at  | month_created |
+| ----------- | ------------------ | ----------- | ------------- |
+
 
