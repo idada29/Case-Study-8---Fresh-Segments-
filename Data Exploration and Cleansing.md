@@ -173,3 +173,43 @@ WHERE CTE_1.month_year IS NOT NULL;
 
   
 *7. Are there any records in your joined table where the month_year value is before the created_at value from the fresh_segments.interest_map table? Do you think these values are valid and why?*
+```sql 
+-- Solution - involves two steps:
+-- I used step one to confirm records with metric date lesser than mapping date, next the step two was used to do a more indepth search of drilling down in terms of month and year rather than just full date as we formated the month_year to the beginning of the month
+-- More explanation: The first thing to check is how many rows are there per unique identifier in our table - in this case it’s going to be the id column from our fresh_segments.interest_map table. So there are definitely rows which show this characteristic - however, when we think about this from a deeper perspective - all of our metrics look like they are created monthly! Having the beginning of the month may just be a proxy for a summary version of all of our aggregated metrics throughout the month - so in this case we need to be wary that the month_year column might well be before our created_at column - but it shouldn’t be from an earlier month.
+Let’s confirm this by comparing the truncatated beginning of month for each created_at value with the month_year column again. 
+WITH CTE_1 AS (
+SELECT interest_id, month_year AS metrics_year_months
+FROM  interest_metrics
+), 
+CTE_2 AS (
+SELECT id, created_at, created_at AS map_year_months
+FROM interest_map
+)
+SELECT 
+    COUNT(*) AS Records
+FROM
+    CTE_1 INNER JOIN CTE_2 
+    ON CTE_1.interest_id = CTE_2.id
+WHERE
+    CTE_1.metrics_year_months < CTE_2.map_year_months;
+
+-- STEP 2
+WITH CTE_1 AS (SELECT 
+    interest_id,
+    DATE_FORMAT(month_year, '%Y-%m') AS metrics_year_months
+FROM
+    interest_metrics)
+        
+SELECT 
+    CTE_1.*,
+    B.created_at,
+    DATE_FORMAT(B.created_at, '%Y-%m') AS month_created
+FROM CTE_1
+	LEFT JOIN interest_map B 
+    ON CTE_1.interest_id = B.id
+WHERE
+    metrics_year_months < DATE_FORMAT(B.created_at, '%Y-%m');	
+```	
+**Indeed we can see that there are no rows for this query - so all of our data points seem to be valid for our case study!**
+
