@@ -133,8 +133,8 @@ FROM
   ON m.interest_id = c.interest_id;
  ```
 **If you compare this to the last question which states the cutoff of the cummulative percentage should be at 90 percent, 
-that will fall just right on the 6 months, thus we will be removing -- all interest rate lower than 6 months. 
-It means we would be removing any information for abouT 400 customers which really is alot.**
+that will fall just right on the 6 months, thus we will be removing all interest rate lower than 6 months. 
+It means we would be removing any information for about 400 customers which really is alot.**
 		       
  | removed_rows |
 |--------------|
@@ -145,49 +145,40 @@ It means we would be removing any information for abouT 400 customers which real
 ## Question 4
 *Does this decision make sense to remove these data points from a business perspective? Use an example where there are all 14 months present to a removed interest example for your arguments - think about what it means to have less months present from a segment perspective.*
 
-```sql	
-SELECT DISTINCT
-    A.interest_id AS Ids, COUNT(A.interest_id) AS count_ids
-FROM
-    interest_metrics A
-        LEFT JOIN
-    interest_map B ON A.interest_id = B.id
-WHERE B.id IS NULL
-GROUP BY ids;
-
--- Viceversa, there are seven records in map table that is not in the metrics table 
-SELECT DISTINCT
-    B.id AS Ids, COUNT(B.id) AS count_ids, B.interest_summary
-FROM
-    interest_map B 
-        LEFT JOIN
-	interest_metrics A ON B.id = A.interest_id 
-WHERE A.interest_id IS NULL
-GROUP BY ids,3;	
-```	
-|Ids   | count_ids | interest_summary                                                                                                          |
-|------|----------|---------------------------------------------------------------------------------------------------------------------------|
-|19598 | 1        | People reading fan sites, promotional material, and news on the Doctor Who series.                                       |
-|35964 | 1        | People in this audience participate and/or spectate in eSports (Competitive/Professional video gaming), follow various video game leagues, and keep up with video game tournaments that take place throughout the year.|
-|40185 | 1        | People researching news and trends in astronomy.                                                                          |
-|40186 | 1        | Consumers watching and reading about WWE and pro wrestling.                                                               |
-|42010 | 1        | People reading Minecraft news and following gaming trends.                                                               |
-|42400 | 1        | People reading Diablo news and following gaming trends.                                                                  |
-|47789 | 1        | People researching attractions and accommodations in Israel. These consumers are more likely to spend money on travel|
-
+Any record that has less than 6 months of data might be an interest that was introduced recently, or it might have missing data across multiple months (inconsistent data). In spite of the fact that these are both good reasons to exclude them from the analysis, more analysis should be done on these "rare" records just in case they provide some insight into the introduction of new interests over time.
 	
 	
 ## Question 5	
 *After removing these interests - how many unique interests are there for each month?*
 	
 ```sql
-SELECT 
-    CONCAT('There is ',
-            COUNT(B.id),
-            ' in interest_map table') AS Records
-FROM
-    interest_map B;	
+  SELECT
+    month_year,
+    COUNT(DISTINCT interest_id) AS total_interest
+  FROM
+    interest_metrics
+  WHERE month_year IS NOT NULL
+  GROUP BY
+    month_year
+  ORDER BY total_interest DESC;
+	
 ```
-|Records|
-|------:|
-|There is 1209 in interest_map table|
+
+| Month-Year | Total Interest |
+|------------|----------------|
+| 2019-08-01 |      1149     |
+| 2019-03-01 |      1136     |
+| 2019-02-01 |      1121     |
+| 2019-04-01 |      1099     |
+| 2018-12-01 |      995      |
+| 2019-01-01 |      973      |
+| 2018-11-01 |      928      |
+| 2019-07-01 |      864      |
+| 2018-10-01 |      857      |
+| 2019-05-01 |      857      |
+| 2019-06-01 |      824      |
+| 2018-09-01 |      780      |
+| 2018-08-01 |      767      |
+| 2018-07-01 |      729      |
+
+
