@@ -112,6 +112,7 @@ GROUP BY total_months;
 *If we were to remove all interest_id values which are lower than the total_months value we found in the previous question - how many total data points would we be removing?*
 
  ```sql
+-- Start with a common table expression (CTE) to identify interests with fewer than 6 distinct 
 WITH removed_interests AS (
   SELECT
     interest_id,
@@ -124,7 +125,7 @@ WITH removed_interests AS (
   HAVING 
     COUNT(DISTINCT (month_year)) < 6
 )
-
+-- Join the interest_metrics table with the removed_interests CTE to get the count of removed rows
 SELECT 
   COUNT(*) AS removed_rows
 FROM 
@@ -152,6 +153,7 @@ Any record that has less than 6 months of data might be an interest that was int
 *After removing these interests - how many unique interests are there for each month?*
 	
 ```sql
+-- Select the month_year and count of distinct interest_ids for each month_year
   SELECT
     month_year,
     COUNT(DISTINCT interest_id) AS total_interest
