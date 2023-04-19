@@ -46,33 +46,66 @@ ORDER BY Interest_Months.total_months DESC;
 *Using this same total_months measure - calculate the cumulative percentage of all records starting at 14 months - which total_months value passes the 90% cumulative percentage value?*
  
  ```sql 
--- Replace the null value in the newly concatenated month_year with unknown then count records
- SELECT 
-    COALESCE(month_year, 'Unknown') AS Dates,
-    COUNT(*) AS Records
-FROM
+-- This aggregates the interest interaction by the number of months a user clicked
+WITH interest_counts AS (
+  SELECT
+    interest_id,
+    COUNT(DISTINCT month_year) AS total_months
+  FROM
     interest_metrics
-GROUP BY Dates
-ORDER BY 1 DESC , 2; 
+  GROUP BY
+    interest_id
+  HAVING 
+    COUNT(DISTINCT (month_year)) <> 0
+), 
+-- This counts the number of interest appearing in multiple months
+month_counts AS (
+  SELECT
+    total_months,
+    COUNT(DISTINCT interest_id) AS interest_count
+  FROM
+    interest_counts
+  GROUP BY
+    total_months
+), 
+-- This step is very essential to establish the range of our data that doesn't represent the majority of the customer interactions. For this, it is set at 90%
+-- cummulative percentage.
+	
+Cumulative AS (
+  SELECT
+    total_months,
+    interest_count,
+    SUM(interest_count) OVER (ORDER BY total_months DESC) AS cumulative_count
+  FROM
+    month_counts
+)
+  
+SELECT
+    total_months,
+    interest_count, 
+	ROUND(100 * cumulative_count / SUM(interest_count) OVER(), 2) AS cumulative_percentage
+FROM Cumulative
+GROUP BY total_months;
+
 ```
 
- | Dates       | Records |
-|-------------|---------|
-| Unknown     | 1194    |
-| 2019-08-01  | 1149    |
-| 2019-03-01  | 1136    |
-| 2019-02-01  | 1121    |
-| 2019-04-01  | 1099    |
-| 2018-12-01  | 995     |
-| 2019-01-01  | 973     |
-| 2018-11-01  | 928     |
-| 2019-07-01  | 864     |
-| 2019-05-01  | 857     |
-| 2018-10-01  | 857     |
-| 2019-06-01  | 824     |
-| 2018-09-01  | 780     |
-| 2018-08-01  | 767     |
-| 2018-07-01  | 729     |
+| Total Months | Interest Count | Cumulative % |
+|--------------|----------------|---------------|
+|      14      |      480      |     39.93    |
+|      13      |       82      |     46.76    |
+|      12      |       65      |     52.16    |
+|      11      |       94      |     59.98    |
+|      10      |       86      |     67.14    |
+|       9      |       95      |     75.04    |
+|       8      |       67      |     80.62    |
+|       7      |       90      |     88.10    |
+|       6      |       33      |     90.85    |
+|       5      |       38      |     94.01    |
+|       4      |       32      |     96.67    |
+|       3      |       15      |     97.92    |
+|       2      |       12      |     98.92    |
+|       1      |       13      |    100.00    |
+
 
 
  ## Question 3
