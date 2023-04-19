@@ -106,34 +106,40 @@ GROUP BY total_months;
 |       2      |       12      |     98.92    |
 |       1      |       13      |    100.00    |
 
-
+**This approach to cumulative metrics is really popular when we want to determine where we should cut off data which is “rare” and does not represent the majority of the other records in the analysis.**
 
  ## Question 3
 *If we were to remove all interest_id values which are lower than the total_months value we found in the previous question - how many total data points would we be removing?*
 
- ```sql  
--- Select all records in the month_year that is null
-WITH records AS (
-  SELECT COALESCE(month_year, 'Unknown') AS Dates,
-    COUNT(*) AS Records
-  FROM interest_metrics
-  GROUP BY Dates
-  ORDER BY 1 DESC , 2
+ ```sql
+-- If you compare this to the last question which states the cutoff of the cummulative percentage should be at 90 percent, 
+-- that will fall just right on the 6 months, thus we will be removing -- all interest rate lower than 6 months. 
+-- It means we would be removing any information for abouT 400 customers which really is alot.
+	
+WITH removed_interests AS (
+  SELECT
+    interest_id,
+    COUNT(DISTINCT month_year) AS total_months
+  FROM
+    interest_metrics
+  WHERE interest_id != 0
+  GROUP BY
+    interest_id
+  HAVING 
+    COUNT(DISTINCT (month_year)) < 6
 )
--- Count the number of null/unknown value and others
+
 SELECT 
-	CASE WHEN Dates = 'Unknown' THEN 'Unknown'
-    ELSE 'Other' END AS Record_dates,
-    SUM(Records) AS Total_Record
-FROM records
-GROUP BY 
-	CASE WHEN Dates = 'Unknown' THEN 'Unknown' ELSE 'Other' END;
+  COUNT(*) AS removed_rows
+FROM 
+  interest_metrics m
+  INNER JOIN removed_interests c 
+  ON m.interest_id = c.interest_id;
  ```
-**In this case, it was impossible to trace the ads interaction to any date or interest_id. Hence we will drop it**
- | Record_dates | Total_records |
-|--------------|---------------|
-| Unknown      | 1194          |
-| Other        | 13079       |
+ | removed_rows |
+|--------------|
+|400      |	       
+
 
 
 ## Question 4
