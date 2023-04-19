@@ -22,7 +22,7 @@ GROUP BY total_months
 HAVING total_months <> 0
 ORDER BY Interest_Months.total_months DESC; 
 ```
---------------------------------
+
 | Total Months | Total Interest |
 --------------------------------
 |     14       |      480      |
@@ -39,7 +39,7 @@ ORDER BY Interest_Months.total_months DESC;
 |      3       |       15      |
 |      2       |       12      |
 |      1       |       13      |
---------------------------------
+
   
  
 ## Question 2
