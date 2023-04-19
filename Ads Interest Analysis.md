@@ -112,10 +112,6 @@ GROUP BY total_months;
 *If we were to remove all interest_id values which are lower than the total_months value we found in the previous question - how many total data points would we be removing?*
 
  ```sql
--- If you compare this to the last question which states the cutoff of the cummulative percentage should be at 90 percent, 
--- that will fall just right on the 6 months, thus we will be removing -- all interest rate lower than 6 months. 
--- It means we would be removing any information for abouT 400 customers which really is alot.
-	
 WITH removed_interests AS (
   SELECT
     interest_id,
@@ -136,6 +132,10 @@ FROM
   INNER JOIN removed_interests c 
   ON m.interest_id = c.interest_id;
  ```
+**If you compare this to the last question which states the cutoff of the cummulative percentage should be at 90 percent, 
+that will fall just right on the 6 months, thus we will be removing -- all interest rate lower than 6 months. 
+It means we would be removing any information for abouT 400 customers which really is alot.**
+		       
  | removed_rows |
 |--------------|
 |400      |	       
