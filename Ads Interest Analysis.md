@@ -24,7 +24,7 @@ ORDER BY Interest_Months.total_months DESC;
 ```
 
 | Total Months | Total Interest |
---------------------------------
+|---------------|----------------|
 |     14       |      480      |
 |     13       |       82      |
 |     12       |       65      |
